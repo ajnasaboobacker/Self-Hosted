@@ -18,12 +18,12 @@ function error {
 }
 
 function check_internet() {
-  printf "Checking if you are online..."
+  printf "Checking if you have an active internet..."
   wget -q --spider http://github.com
   if [ $? -eq 0 ]; then
-    echo "Online. Continuing."
+    echo "Yes, You have! Lets do it!."
   else
-    error "Offline. Go connect to the internet then run the script again."
+    error "Oops! You don't. Connect to a wired or wireless internet connection and try again."
   fi
 }
 
@@ -31,7 +31,8 @@ check_internet
 
 curl -sSL https://get.docker.com | sh || error "Failed to install Docker."
 sudo usermod -aG docker $USER || error "Failed to add user to the Docker usergroup."
-echo "Remember to logoff/reboot for the changes to take effect."
+sleep 2
+echo ""
 
 echo "Installing Docker-Compose.."
 sleep 5
@@ -50,4 +51,4 @@ sudo docker run -d -p 9000:9000 -p 9443:9443 --name=portainer --restart=always -
 echo""
 echo""
 echo"Installation Successful"
-echo "Remember to logoff/reboot for the changes to take effect."
+echo "Please logout/Reboot for the changes to take effect."
