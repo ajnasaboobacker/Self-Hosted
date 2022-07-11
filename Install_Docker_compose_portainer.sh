@@ -64,4 +64,5 @@ sudo docker run -d -p 9000:9000 -p 9443:9443 --name=portainer --restart=always -
 echo""
 echo""
 echo "Installation Successful"
+echo ""
 echo "Please logout/Reboot for the changes to take effect."
